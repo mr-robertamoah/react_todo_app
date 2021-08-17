@@ -1,0 +1,73 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "first todo",
+      "description": "Voluptate culpa commodo cillum amet id officia velit enim quis minim tempor exercitation",
+      "done": true,
+      "dueDate": null,
+      "public": false,
+      "userId": 1,
+      "position": 1,
+      "createdAt": null
+    },
+    {
+      "id": 2,
+      "title": "second todo",
+      "description": "Do in aliqua proident proident est magna ea occaecat minim aliquip laboris voluptate aute.",
+      "done": true,
+      "dueDate": null,
+      "public": false,
+      "userId": 1,
+      "position": 2,
+      "createdAt": null
+    },
+    {
+      "id": 3,
+      "title": "third todo",
+      "description": "Labore velit in pariatur fugiat nisi nisi enim proident duis laborum fugiat nostrud nisi adipisicing.",
+      "done": true,
+      "dueDate": null,
+      "public": false,
+      "userId": 1,
+      "position": 3,
+      "createdAt": null
+    },
+    {
+      "id": 4,
+      "title": "this is the latest",
+      "description": "i will have to work on my app",
+      "dueDate": "2021-08-11T14:38",
+      "public": false,
+      "userId": 1,
+      "position": 4,
+      "createdAt": null
+    },
+    {
+      "id": 5,
+      "title": "new",
+      "description": "have to be able to do this very soon",
+      "dueDate": "2021-08-10T14:54",
+      "public": false,
+      "userId": 1,
+      "position": 5,
+      "createdAt": null
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "george grant",
+      "about": "",
+      "username": "georgio12",
+      "password": "password"
+    },
+    {
+      "id": 2,
+      "name": "joshua pen",
+      "about": "",
+      "username": "pentop13",
+      "password": "password"
+    }
+  ]
+}
