@@ -7,7 +7,8 @@ import axios from "axios";
 import DateInput from "../components/ui/DateInput";
 import { bindActionCreators } from "redux";
 import * as todoActionCreators from '../store/action creators/TodoActionCreators'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Message from "../components/Message";
 
 function EditTodo(props) {
   let history = useHistory();
@@ -16,6 +17,9 @@ function EditTodo(props) {
   let [dueDate, setDueDate] = useState("");
   let [error, setError] = useState("");
   let [loading, setLoading] = useState(false);
+  let user = useSelector(state=>state.user);
+  let [message, setMessage] = useState("");
+  let [disabled, setDisabled] = useState(false);
 
   let dispatch = useDispatch()
   let {replaceTodo} = bindActionCreators(todoActionCreators, dispatch)
@@ -37,6 +41,18 @@ function EditTodo(props) {
   }
 
   function initiate() {
+    if (! user) {
+      setDisabled(true)
+      setMessage('you have not logged in')
+      return
+    }
+
+    if (! history.location.state?.title) {
+      setDisabled(true)
+      setMessage('there is no valid todo to edit')
+      return
+    }
+
     if (!title.length) {
       setTitle(history.location.state.title);
     }
@@ -114,6 +130,7 @@ function EditTodo(props) {
   }
 
   return (
+    <>
     <Form
       onSubmit={onButtonClicked}
       heading="edit a todo"
@@ -125,21 +142,30 @@ function EditTodo(props) {
       <Input
         className="mb-2"
         placeholder="add name"
-        initialValue={history.location.state.title}
+        initialValue={history.location.state?.title}
         onChange={onInputChange}
+        disabled={disabled}
       />
       <Textarea
         className="mb-2"
         placeholder="add description"
         onChange={onInputChange}
-        initialValue={history.location.state.description}
+        initialValue={history.location.state?.description}
+        disabled={disabled}
       />
       <DateInput
         className="mb-2"
-        initialValue={history.location.state.dueDate}
+        initialValue={history.location.state?.dueDate}
         onChange={onInputChange}
+        disabled={disabled}
       />
     </Form>
+    <Message
+      condition={! user}
+      defaultMessage={!! history.location.state ? `edit the todo with title ${history.location.state.title}` : ''}
+      message={message}
+    />
+    </>
   );
 }
 

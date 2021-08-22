@@ -48,6 +48,7 @@ function Checkbox(props) {
         type="checkbox"
         className="mr-2"
         required={props.required}
+        disabled={props.disabled}
       ></input>
       <label htmlFor={props.id}>{props.placeholder?.length ? props.placeholder : "check"}</label>
     </div>

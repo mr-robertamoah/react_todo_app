@@ -9,6 +9,8 @@ import { bindActionCreators } from "redux";
 import * as todoActionCreators from '../store/action creators/TodoActionCreators'
 import { useDispatch, useSelector } from "react-redux";
 import Checkbox from "../components/ui/Checkbox";
+import { useEffect } from "react";
+import Message from "../components/Message";
 
 function CreateTodo(props) {
   let todos = useSelector((state)=> state.todos)
@@ -19,9 +21,23 @@ function CreateTodo(props) {
   let [dueDate, setDueDate] = useState();
   let [isPublic, setIsPublic] = useState(false);
   let history = useHistory();
+  let user = useSelector(state=>state.user);
+  let [message, setMessage] = useState("");
+  let [disabled, setDisabled] = useState(false);
 
   let dispatch = useDispatch()
   let {addTodo} = bindActionCreators(todoActionCreators, dispatch)
+
+  useEffect(()=>{
+    function init() {
+      if (!user) {
+        setDisabled(true)
+        setMessage('you have not logged in')
+      }
+    }
+
+    init()
+  }, [user])
 
   async function onInputChange(event) {
     resetError();
@@ -106,6 +122,7 @@ function CreateTodo(props) {
   }
 
   return (
+    <>
     <Form
       onSubmit={onButtonClicked}
       heading="create a todo"
@@ -118,20 +135,33 @@ function CreateTodo(props) {
         className="mb-2"
         placeholder="add title"
         onChange={onInputChange}
+        disabled={disabled}
       />
       <Textarea
         className="mb-2"
         placeholder="add description"
         onChange={onInputChange}
+        disabled={disabled}
       />
-      <DateInput className="mb-2" onChange={onInputChange} />
+      <DateInput 
+        className="mb-2" 
+        onChange={onInputChange} 
+        disabled={disabled}
+      />
       <Checkbox
         className="mb-2"
         placeholder="make public"
         id="checkbox-1"
         onChange={onInputChange}
+        disabled={disabled}
       />
     </Form>
+    <Message
+      condition={! user}
+      defaultMessage="create a todo now"
+      message={message}
+    />
+    </>
   );
 }
 

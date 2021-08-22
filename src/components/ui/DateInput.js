@@ -34,6 +34,7 @@ function DateInput(props) {
         inputRef.current?.value?.length ? "text-black" : "text-gray-500"
       }`}
       required={props.required}
+      disabled={props.disabled}
     />
   );
 }

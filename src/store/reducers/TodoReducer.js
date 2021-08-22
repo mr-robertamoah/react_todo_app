@@ -3,8 +3,12 @@ import TodoConstants from "../contants/TodoConstants";
 
 export default function todoReducer(state = [], {type, payload}) {
     switch (type) {
-        
         case TodoConstants.SET_TODOS :
+            return setTodos(state, {
+                page: payload.page,
+                todos: payload.data
+            })
+        case TodoConstants.SET_PUBLIC_TODOS :
             return setTodos(state, {
                 page: payload.page,
                 todos: payload.data

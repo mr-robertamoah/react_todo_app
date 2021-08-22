@@ -25,6 +25,7 @@ function Textarea(props) {
       placeholder={props.placeholder?.length ? props.placeholder : "enter"}
       id={props.id}
       rows={props.row ? props.row : "5"}
+      disabled={props.disabled}
       onChange={props.onChange}
       onInput={props.onInput}
       ref={textareaRef}

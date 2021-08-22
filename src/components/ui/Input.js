@@ -30,6 +30,7 @@ function Input(props) {
       type={props.type ? props.type : "text"}
       className={`form-input ${props.className}`}
       required={props.required}
+      disabled={props.disabled}
     />
   );
 }

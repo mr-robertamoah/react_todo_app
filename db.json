@@ -6,7 +6,7 @@
       "description": "Voluptate culpa commodo cillum amet id officia velit enim quis minim tempor exercitation",
       "done": true,
       "dueDate": null,
-      "public": false,
+      "public": true,
       "userId": 1,
       "position": 1,
       "createdAt": null
@@ -17,7 +17,7 @@
       "description": "Do in aliqua proident proident est magna ea occaecat minim aliquip laboris voluptate aute.",
       "done": true,
       "dueDate": null,
-      "public": false,
+      "public": true,
       "userId": 1,
       "position": 2,
       "createdAt": null
@@ -28,7 +28,7 @@
       "description": "Labore velit in pariatur fugiat nisi nisi enim proident duis laborum fugiat nostrud nisi adipisicing.",
       "done": true,
       "dueDate": null,
-      "public": false,
+      "public": true,
       "userId": 1,
       "position": 3,
       "createdAt": null

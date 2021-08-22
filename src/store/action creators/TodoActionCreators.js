@@ -1,7 +1,18 @@
+import TodoConstants from "../contants/TodoConstants"
+
 function setTodos({data, page = null}) {
     return (dispatch)=> {
         dispatch({
-            type: 'setTodos',
+            type: TodoConstants.SET_TODOS,
+            payload: {page, data}
+        })
+    }
+}
+
+function setPublicTodos({data, page = null}) {
+    return (dispatch)=> {
+        dispatch({
+            type: TodoConstants.SET_PUBLIC_TODOS,
             payload: {page, data}
         })
     }
@@ -10,7 +21,7 @@ function setTodos({data, page = null}) {
 function addTodo(todo) {
     return (dispatch)=> {
         dispatch({
-            type: 'addTodo',
+            type: TodoConstants.ADD_TODO,
             payload: todo
         })
     }
@@ -19,7 +30,7 @@ function addTodo(todo) {
 function replaceTodo(todo) {
     return (dispatch)=> {
         dispatch({
-            type: 'replaceTodo',
+            type: TodoConstants.REPLACE_TODO,
             payload: todo
         })
     }
@@ -28,10 +39,10 @@ function replaceTodo(todo) {
 function removeTodo(todo) {
     return (dispatch)=> {
         dispatch({
-            type: 'removeTodo',
+            type: TodoConstants.REMOVE_TODO,
             payload: todo
         })
     }
 }
 
-export {addTodo, setTodos, replaceTodo, removeTodo}
+export {addTodo, setTodos, replaceTodo, removeTodo, setPublicTodos}

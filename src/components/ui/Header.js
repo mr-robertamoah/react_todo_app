@@ -67,18 +67,22 @@ function Header({heading}) {
           </HeaderLink>
         )}
         {user && (<>
-          <HeaderLink
-            to="/todos"
-            className="mr-2"
-          >
-            view todos
-          </HeaderLink>
-          <HeaderLink
-            to="/todos/create"
-            className="mr-2"
-          >
-            create todo
-          </HeaderLink>
+          {
+            pathName !== '/todos' && <HeaderLink
+              to="/todos"
+              className="mr-2"
+            >
+              view todos
+            </HeaderLink>
+          }
+          {
+            pathName !== '/todos/create' && <HeaderLink
+              to="/todos/create"
+              className="mr-2"
+            >
+              create todo
+            </HeaderLink>
+            }
           <div
             onClick={clickedLogout}
             className="header-link mr-2 cursor-pointer"

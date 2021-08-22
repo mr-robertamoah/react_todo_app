@@ -4,6 +4,7 @@ import userReducer from './UserReducer'
 
 const reducers = combineReducers({
     todos: todoReducer,
+    publicTodos: todoReducer,
     user: userReducer
 })
 

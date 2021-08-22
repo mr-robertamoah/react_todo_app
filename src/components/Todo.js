@@ -19,8 +19,23 @@ function Todo(props) {
   const {removeTodo, replaceTodo} = bindActionCreators(todoActionCreators, dispatch)
 
   useEffect(() => {
+
+    function checkTodo() {
+      if (!props.todo.dueDate) {
+        setIsDue(false);
+        return;
+      }
+  
+      if (new Date(props.todo.dueDate).getTime() > new Date().getTime()) {
+        setIsDue(false);
+        return;
+      }
+  
+      setIsDue(true);
+    }
+
     checkTodo();
-  }, [props.todo.dueDate, setIsDue]);
+  }, [setIsDue]);
 
   function clickedDelete() {
     setShowModal(true);
@@ -28,20 +43,6 @@ function Todo(props) {
 
   function clickedEdit() {
     history.push(`/todos/${props.todo.id}/edit`, { ...props.todo });
-  }
-
-  function checkTodo() {
-    if (!props.todo.dueDate) {
-      setIsDue(false);
-      return;
-    }
-
-    if (new Date(props.todo.dueDate).getTime() > new Date().getTime()) {
-      setIsDue(false);
-      return;
-    }
-
-    setIsDue(true);
   }
 
   async function clickedMark(event) {
